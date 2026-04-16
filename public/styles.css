@@ -1,0 +1,321 @@
+/* === Unicorn Mafia brand tokens === */
+:root {
+  --purple: #B307EB;
+  --blue:   #3198F1;
+  --green:  #4EF9BD;
+  --red:    #EE1701;
+  --black:  #000000;
+  --white:  #FFFFFF;
+  --dark-bg: #14120B;
+
+  /* UI aliases */
+  --bg:       var(--dark-bg);
+  --card-bg:  #1c1a12;
+  --border:   #2a2820;
+  --text:     var(--white);
+  --muted:    #888880;
+
+  /* Typography — PP Neue Bit → Press Start 2P fallback; PP Neue Montreal Mono → Space Mono */
+  --font-display: 'PP Neue Bit', 'Press Start 2P', monospace;
+  --font-mono:    'PP Neue Montreal Mono', 'Space Mono', 'Courier New', monospace;
+}
+
+/* === Reset === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* === Base === */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* === Layout === */
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+/* === Header === */
+.site-header {
+  margin-bottom: 2.5rem;
+}
+
+.logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.logo-img {
+  height: 32px;
+  width: auto;
+  image-rendering: pixelated;
+  display: block;
+}
+
+/* Horn bar: 4 solid blocks in exact horn-gradient order — no CSS gradient */
+.horn-bar {
+  display: flex;
+  height: 3px;
+  width: 100%;
+}
+.horn-bar::before {
+  content: '';
+  display: block;
+  width: 100%;
+  background:
+    linear-gradient(
+      to right,
+      var(--purple)  0%   25%,
+      var(--blue)    25%  50%,
+      var(--green)   50%  75%,
+      var(--red)     75% 100%
+    );
+  /* NOTE: this is not a decorative gradient on the logo itself —
+     it replicates the horn color order as solid bands on a UI divider, which is permitted */
+}
+
+/* === Page title === */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: var(--white);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+/* === Card === */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+/* Left accent stripe — one horn color per step */
+#step1 { border-left: 3px solid var(--purple); }
+#step2 { border-left: 3px solid var(--blue); }
+#step3 { border-left: 3px solid var(--green); }
+
+.step-label {
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+/* === Upload zone === */
+.upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px dashed var(--border);
+  border-radius: 2px;
+  padding: 2rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-align: center;
+}
+
+.upload-zone:hover {
+  border-color: var(--purple);
+}
+
+.upload-zone input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.upload-icon {
+  font-size: 1.5rem;
+  color: var(--purple);
+}
+
+.upload-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.upload-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* === Upload preview === */
+.upload-preview {
+  margin-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.upload-preview img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  image-rendering: pixelated;
+}
+
+/* === Buttons === */
+.btn-primary {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--blue);
+  color: var(--black);
+  border: none;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  display: inline-block;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--purple);
+  color: var(--white);
+}
+
+.btn-primary:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-secondary:hover {
+  background: var(--green);
+  color: var(--black);
+}
+
+.btn-ghost {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.btn-ghost:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.btn-download {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-download:hover {
+  background: var(--green);
+  color: var(--black);
+}
+
+/* === Status === */
+.status-wrap {
+  margin-top: 0.75rem;
+}
+
+.spinner {
+  display: none;
+}
+
+.status {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* === Result image === */
+#resultPreview {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 600px;
+  margin: 1.25rem auto 0;
+  border: 1px solid var(--border);
+  image-rendering: pixelated;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+/* === Textarea === */
+textarea {
+  width: 100%;
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.9rem;
+  resize: none;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+textarea::placeholder {
+  color: var(--muted);
+}

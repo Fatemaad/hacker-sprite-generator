@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacker Sprite Generator — Unicorn Mafia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="site-header">
+        <div class="logo-lockup">
+          <img src="./logo.png" alt="Unicorn Mafia" class="logo-img" />
+        </div>
+        <div class="horn-bar"></div>
+      </header>
+
+      <h1>Hacker Sprite<br />Generator</h1>
+      <p class="subtitle">Generate your cyberpunk sprite in 3 quick steps.</p>
+
+      <section class="card" id="step1">
+        <div class="step-label">01</div>
+        <h2>Upload your photo</h2>
+        <label class="upload-zone" for="imageInput">
+          <div class="upload-icon">⬆</div>
+          <span class="upload-text">Click to choose a file</span>
+          <span class="upload-hint">PNG, JPG, or WEBP · Full-body or upper-body works best</span>
+          <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" />
+        </label>
+        <div id="uploadPreview" class="upload-preview" hidden>
+          <img id="previewImg" alt="Uploaded photo preview" />
+          <button id="clearBtn" class="btn-ghost">✕ Remove</button>
+        </div>
+      </section>
+
+      <section class="card" id="step2">
+        <div class="step-label">02</div>
+        <h2>Generate sprite + sticker</h2>
+        <button id="generateBtn" class="btn-primary" disabled>Generate Asset</button>
+        <div id="statusWrap" class="status-wrap" hidden>
+          <p id="status" class="status"></p>
+        </div>
+        <canvas id="resultCanvas" hidden></canvas>
+        <img id="resultPreview" alt="Generated sprite with sticker" hidden />
+        <div class="actions" id="imageActions" hidden>
+          <a id="downloadLink" download="unicorn-mafia-hacker-sprite.png" class="btn-download">↓ Download sprite</a>
+        </div>
+      </section>
+
+      <section class="card" id="step3">
+        <div class="step-label">03</div>
+        <h2>Copy your post text</h2>
+        <textarea id="copyText" rows="11" readonly>I've got an early invite to the 'To The Americas' Hackathon by the Unicorn Mafia.
+excited to team up with some of Europe's top builders.
+lets get cooking!!
+
+sponsors:
+Pydantic - https://lnkd.in/eV58E4PH  Render - https://lnkd.in/eJBbc7sw
+cognition.ai
+mubit.ai The Residency
+Expedite</textarea>
+        <button id="copyBtn" class="btn-secondary">Copy text</button>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
